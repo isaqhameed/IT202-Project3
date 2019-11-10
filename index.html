@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
   <head>
@@ -18,4 +18,77 @@
     <script src="index.js"></script>
   </body>
 
+</html>
+ -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Canvas Animation</title>
+  </head>
+<body>
+
+<canvas id="animationCanvas" width="400" height="400">
+
+
+
+
+<script>
+var background = new Image();
+background.src = "pics/stars.jpeg";
+
+
+var x = 0, y = 200;
+var c = document.getElementById("animationCanvas");   
+var ctx = c.getContext("2d");
+ctx.fillStyle = "red";
+ctx.canvas.width = window.innerWidth;
+ctx.canvas.height = window.innerHeight;
+    
+console.log(c.width, c.height);
+
+function draw() {
+  // clear the canvas
+  ctx.clearRect(0, 0, c.width, c.height);
+
+  
+  
+  // increment coord to "move" l to r
+  x += 1;
+
+  // handle edge condition
+  if (x > c.width) {
+    x -= c.width;
+  }
+
+  // draw objects
+
+  // draw the background image
+  ctx.drawImage(background, 0, 0, c.width, c.height);
+  
+  // draw a circle
+  // start a new path;  
+  //  comment out begin and close path to see what happens
+  ctx.beginPath();
+
+  //  a circle at the coordinates
+  ctx.arc(x, y, 25, 0, Math.PI * 2);
+  ctx.closePath();
+
+  ctx.fill();
+
+
+
+  // call again when available
+  window.requestAnimationFrame(draw);
+}
+
+
+// kick it off
+window.requestAnimationFrame(draw);
+
+
+</script>
+
+</body>
 </html>

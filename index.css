@@ -1,0 +1,55 @@
+Css
+html, body {
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  font-style: normal;
+  font-family: Impact, Charcoal, sans-serif
+}
+
+canvas {
+  border: 1px solid #d3d3d3;
+  max-width: 60%;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  align-self: center;
+}
+
+.timer {
+  font-size: xx-large;
+  align-self: center;
+}
+
+header {
+  font-size: xx-large;
+  align-self: center;
+  margin: 0.5%;
+  /* Font options */
+  font-family: 'Pacifico', cursive;
+  text-shadow: 2px 2px 4px #000000;
+  font-size: 40px;
+  /* Chrome, Safari, Opera */
+  -webkit-animation: rainbow 5s infinite;
+  /* Internet Explorer */
+  -ms-animation: rainbow 5s infinite;
+  /* Standar Syntax */
+  animation: rainbow 5s infinite;
+}
+
+
+body {
+  background-color: #607D8B;
+     background-image: url('pics/stars.jpeg'); 
+}
+
+
+.container {
+  background-color: #E0F2F1;
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.75);
+}

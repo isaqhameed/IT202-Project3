@@ -1,4 +1,4 @@
-Css
+ Css
 html, body {
   display: flex;
   max-width: 100%;
@@ -29,27 +29,32 @@ header {
   align-self: center;
   margin: 0.5%;
   /* Font options */
-  font-family: 'Pacifico', cursive;
+   font-family: 'Pacifico', cursive;
   text-shadow: 2px 2px 4px #000000;
   font-size: 40px;
   /* Chrome, Safari, Opera */
-  -webkit-animation: rainbow 5s infinite;
+  -webkit-animation: rainbow 5s infinite; */
   /* Internet Explorer */
-  -ms-animation: rainbow 5s infinite;
+   -ms-animation: rainbow 5s infinite; */
   /* Standar Syntax */
-  animation: rainbow 5s infinite;
-}
+   animation: rainbow 5s infinite; */
+ } 
 
 
 body {
   background-color: #607D8B;
      background-image: url('pics/stars.jpeg'); 
 }
-
+#player{
+    
+    background-image: url('pics/hero.png');
+    height: 960 px;
+    width: 100 px;
+}
 
 .container {
   background-color: #E0F2F1;
   padding: 10px;
   border-radius: 15px;
   box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.75);
-}
+} 

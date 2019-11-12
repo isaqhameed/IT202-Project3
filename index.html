@@ -1,26 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en" dir="ltr">
-
-  <head>
-    <meta charset="utf-8">
-    <title>Space Invaders</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="index.css">
-  </head>
-
-  <body>
-    <header class="title">
-      Space Invaders
-    </header>
-      
-    <canvas id="invaderCanvas"></canvas>
-
-    <script src="index.js"></script>
-  </body>
-
-</html>
- -->
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,233 +5,67 @@
     <title>Space Invaders</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="index.css">
-  
-  <title>Simple Canvas Animation</title>
+     <link rel="stylesheet" href="style.css">
   </head>
 <body>
 
 <canvas id="invaderCanvas"></canvas>
-
-
+<div id = "player"></div>
+<div id = "enemy"></div>
+<div id = "points"></div>    
 
 
 <script>
 
-
-// var c = document.getElementById("invaderCanvas");
-// var ctx = c.getContext("2d");
-
-    
-// // for canvas width set to device's innerWidth
-// ctx.canvas.width = window.innerWidth;
-// ctx.canvas.height = window.innerHeight;
-
-// var backgroundImg = new Image();
-// backgroundImg.src = "pics/stars.jpeg";
-    
-//     //game objects : player, enemy, points
-//     //
-
-//     //game initialization
-//     var game={
-//         score: 0,
-//         lives: 3,
-//         level: 1,
-//     }
-//     var gameObjects = {
-//       type: "player",
-//         //position
-//       x: c.width/2,
-//       y: 0,
-//       speed: 5
-//     };
-    
-//        var gameObjects = {
-//       type: "enemy",
-//         //position
-//       x: c.width/2,
-//       y: 100,
-//       speed: 5
-//     };
-
-//         var gameObjects = {
-//       type: "points",
-//         //position
-//       x: c.width/3,
-//       y: 100,
-//       speed: 5
-//     };
-
-//     var player = gameObjects[0];
-//     var enemy = gameObjects[1];
-//     var points = gameObjects[2];
-    
-//     function draw() {
-//   // clear the canvas
-//   ctx.clearRect(0, 0, c.width, c.height);
-//   ctx.drawImage(backgroundImg, 0, 0, c.width, c.height);
-        
-//   for(i in gameObjects){
-//       g = gameObjects[i];
-//       ctx.beginPath();
-//       ctx.arc(g.x, g.y, 25, 0, Math.PI * 2);
-//       ctx.fillStyle="red";
-      
-//       if(g.type != "player"){
-//         g.x -= g.speed * game.level;
-
-//       if (colliding(player, g)) {
-//         if (g.type == "enemy") {
-//           game.lives--;
-//         } else if (g.type == "oneUpLife") {
-//           game.score += 100;
-//           // console.log('mario here')
-//           if (game.score % 100 == 0) {
-//             game.level++;
-
-//             if (game.level % 2 == 0) {
-//               gameObjects.push({
-//                 type: "enemy",
-//                 x: 100,
-//                 y: 75,
-//                 r: 10,
-//                 color: "red",
-//                 speed: game.level
-//               });
-//             }
-//           }
-//         }
-//         g.state = "collision"
-//       }
-//       if ((g.x + g.r < 0) || g.state == "collision") {
-//         g.x = c.width + g.r;
-//         g.y = Math.random() * (c.height - 0) + 0;
-//         g.state = "";
-//       }
-//     }
-//   }
-
-//   // font for score and number of lives
-//   ctx.font = "24px Impact, Charcoal, sans-serif";
-//   ctx.textAlign = "center";
-//   ctx.fillStyle = "cyan";
-//   ctx.fillText("Score: " + game.score + " Player Lives: " + game.lives, c.width / 2, 20);
-
-//   // next frame
-//   if (game.lives > 0) {
-//     window.requestAnimationFrame(draw);
-//   } else {
-//     gameOver();
-//     watch.stopTimer();
-//   }
-
-// }
-
-// function gameOver() {
-//   ctx.clearRect(0, 0, c.width, c.height);
-//   ctx.drawImage(backgroundImg, 0, 0, c.width, c.height);
-
-//   // font for Game Over Screen
-//   ctx.font = "200px Comic Sans MS";
-//   ctx.fillStyle = "cyan";
-//   ctx.textAlign = "center";
-//   ctx.fillText("Game Over", c.width / 2, c.height / 2);
-
-// }
-
-
-
-
-// window.requestAnimationFrame(draw);
-
-// function colliding(circle1, circle2) {
-//   let result = false;
-
-//   let dx = circle1.x - circle2.x;
-//   let dy = circle1.y - circle2.y;
-//   let distance = Math.sqrt(dx * dx + dy * dy);
-
-//   if (distance < circle1.r + circle2.r) {
-//     result = true;
-//   }
-
-//   return result;
-// }
-
-// document.onkeydown = checkKey;
-
-// // key events to use arrow keys
-// function checkKey(e) {
-//   e = e || window.event;
-//   if (e.keyCode == '38') {
-//     // up arrow
-//     player.y -= player.speed;
-//   } else if (e.keyCode == '40') {
-//     // down arrow
-//     player.y += player.speed;
-//   } else if (e.keyCode == '37') {
-//     // left arrow
-//   } else if (e.keyCode == '39') {
-//     // right arrow
-//   }
-// }
-// // kick it off
-// window.requestAnimationFrame(draw);
-
 let c = document.getElementById("invaderCanvas");
 let ctx = c.getContext("2d");
-
 // for canvas width set to device's innerWidth
 ctx.canvas.width = window.innerWidth;
 ctx.canvas.height = window.innerHeight;
+    
+    var player = {
+        
+    left: 575,
+        top: 700
+        
+        
+    };
 
-let game = {
-  score: 0,
-  lives: 3,
-  state: "play",
-  level: 1
-};
-
-let gameObjects = [];
-
-gameObjects.push({
-  type: "player",
-  x: c.width/2,
-  y: 960,
-  r: 15,
-  color: "yellow",
-  speed: 10
-});
-
-gameObjects.push({
-  type: "enemy",
-  x: 100,
-  y: 75,
-  r: 30,
-  color: "white",
-  speed: 5
-});
-
-gameObjects.push({
-  type: "points",
-  x: 20,
-  y: 25,
-  r: 20,
-  color: "green",
-  speed: 2.5
-});
-
-let player = gameObjects[0];
-
-// backgroundImg
-let backgroundImg = new Image();
+    var points={};
+    
+    var enemy={};
+    let backgroundImg = new Image();
 backgroundImg.src = "pics/background.png";
 
-function draw() {
-  // clear canvas
-  ctx.clearRect(0, 0, c.width, c.height);
-  ctx.drawImage(backgroundImg, 0, 0, c.width, c.height);
-  // draw objects
+    function draw(){
+   ctx.clearRect(0, 0, c.width, c.height);
+   ctx.drawImage(backgroundImg, 0, 0, c.width, c.height);
+       
+        document.onkeydown = function(e){
+            if(e.keydown == 37){
+                //move left
+              player.left+=10;
+            }
+            if(e.keydown == 39){
+                //move right
+                player.right+=10;
+            }
+            drawPlayer();
+        }
+       
+        function drawPlayer(){
+            document.getElementById('player').style.left = player.left + 'px';
+            document.getElementById('player').style.top = player.top + 'px';   
+        }
+        function drawEnemies(){
+            document.getElementById('points').innerHTML = ""
+            for(var i = 0 ; i < enemies.length ; i++ ) {
+                document.getElementById('enemy').innerHTML += <div class='enemy' style='left:${enemies[i].left}px; top:${enemies[i].top}px'></div>;
+            }
+        }
+   }
+
+
     
 </script>
 

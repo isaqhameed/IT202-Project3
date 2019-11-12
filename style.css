@@ -1,0 +1,22 @@
+
+div#player {
+    width: 50px;
+    height: 50px;
+    background-image: url('pics/hero.png');
+    position: absolute;
+    left: 575px;
+    top: 700px; 
+}
+
+div#points {
+    width: 1200px;
+    height: 800px;
+    position: absolute;
+}
+
+div.enemy {
+    width: 50px;
+    height: 50px;
+    background-image: url('pics/enemy.png');
+    position: absolute;
+}

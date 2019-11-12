@@ -37,10 +37,59 @@ ctx.canvas.height = window.innerHeight;
     let backgroundImg = new Image();
 backgroundImg.src = "pics/background.png";
 
+  var game = {
+  score: 0,
+  lives: 3,
+  state: "play",
+  level: 1
+};
+
+     var gameObjects = [];
+    
+    gameObjects.push({
+        objectType: "player",
+        xposition: c.width/2,
+        yposition: 960,
+        r: 20,
+        color: "brown",
+        speed: 10
+    });
+    
+    gameObjects.push({
+        objectType: "enemy",
+        xposition: c.width/2,
+        yposition: 960,
+        r: 20,
+        color: "red",
+        speed: 10
+    });
+
+    gameObjects.push({
+        objectType: "points",
+        xposition: 80,
+        yposition: 100,
+        r: 15,
+        color: "green",
+        speed: 5
+    });
+
+    var player = gameObjects[0];
+        // backgroundImg
+    let backgroundImg = new Image();
+    backgroundImg.src = "pics/background.png";
+    ctx.fillStyle = "red";
+    
     function draw(){
    ctx.clearRect(0, 0, c.width, c.height);
    ctx.drawImage(backgroundImg, 0, 0, c.width, c.height);
-       
+        
+   for(i in gameObjects){
+       var g = gameObjects[i];
+       ctx.beginPath();
+       ctx.arc(g.x, g.y, 0, 2*Math.PI);
+   }   
+        
+        
         document.onkeydown = function(e){
             if(e.keydown == 37){
                 //move left
@@ -52,20 +101,12 @@ backgroundImg.src = "pics/background.png";
             }
             drawPlayer();
         }
-       
-        function drawPlayer(){
-            document.getElementById('player').style.left = player.left + 'px';
-            document.getElementById('player').style.top = player.top + 'px';   
-        }
-        function drawEnemies(){
-            document.getElementById('points').innerHTML = ""
-            for(var i = 0 ; i < enemies.length ; i++ ) {
-                document.getElementById('enemy').innerHTML += <div class='enemy' style='left:${enemies[i].left}px; top:${enemies[i].top}px'></div>;
-            }
-        }
+     
+
+
+
+  
    }
-
-
     
 </script>
 

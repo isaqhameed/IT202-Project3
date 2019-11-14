@@ -87,7 +87,39 @@ backgroundImg.src = "pics/background.png";
        var g = gameObjects[i];
        ctx.beginPath();
        ctx.arc(g.x, g.y, 0, 2*Math.PI);
+       ctx.strokeStyle = g.color;
+       ctx.stroke();
+
+       if(g.type != "player"){
+           g.y += g.speed *game.level;
+
+           if(collision(player, g)){
+               if(g.type == "enemy"){
+                   game.lives = game.lives-1;
+               }
+               else if(g.type == "points"){
+                   game.score = game.score +100;
+               }
+               if(game.score>=100){
+                   game.level++;
+               }
+               if(game.level>1){
+                   gameObjects.push({
+                    objectType: "enemy",
+                    xposition: c.width/2,
+                    yposition: 960,
+                    r: 20,
+                    color: "red",
+                    speed: game.level
+                });
+               }
+           }
+       }
    }   
+        
+      
+        
+        
         
         
         document.onkeydown = function(e){
@@ -106,6 +138,7 @@ backgroundImg.src = "pics/background.png";
 
 
   
+
    }
     
 </script>

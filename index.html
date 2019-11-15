@@ -1,147 +1,22 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
         <meta charset="utf-8">
     <title>Space Invaders</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="index.css">
-     <link rel="stylesheet" href="style.css">
-  </head>
+<!--      <link rel="stylesheet" href="style.css"> -->
+  </head> 
 <body>
+<center><h2 id = "caption">SPACE INVADERS </h2></center>
 
 <canvas id="invaderCanvas"></canvas>
 <div id = "player"></div>
 <div id = "enemy"></div>
 <div id = "points"></div>    
 
-
-<script>
-
-let c = document.getElementById("invaderCanvas");
-let ctx = c.getContext("2d");
-// for canvas width set to device's innerWidth
-ctx.canvas.width = window.innerWidth;
-ctx.canvas.height = window.innerHeight;
-    
-    var player = {
-        
-    left: 575,
-        top: 700
-        
-        
-    };
-
-    var points={};
-    
-    var enemy={};
-    let backgroundImg = new Image();
-backgroundImg.src = "pics/background.png";
-
-  var game = {
-  score: 0,
-  lives: 3,
-  state: "play",
-  level: 1
-};
-
-     var gameObjects = [];
-    
-    gameObjects.push({
-        objectType: "player",
-        xposition: c.width/2,
-        yposition: 960,
-        r: 20,
-        color: "brown",
-        speed: 10
-    });
-    
-    gameObjects.push({
-        objectType: "enemy",
-        xposition: c.width/2,
-        yposition: 960,
-        r: 20,
-        color: "red",
-        speed: 10
-    });
-
-    gameObjects.push({
-        objectType: "points",
-        xposition: 80,
-        yposition: 100,
-        r: 15,
-        color: "green",
-        speed: 5
-    });
-
-    var player = gameObjects[0];
-        // backgroundImg
-    let backgroundImg = new Image();
-    backgroundImg.src = "pics/background.png";
-    ctx.fillStyle = "red";
-    
-    function draw(){
-   ctx.clearRect(0, 0, c.width, c.height);
-   ctx.drawImage(backgroundImg, 0, 0, c.width, c.height);
-        
-   for(i in gameObjects){
-       var g = gameObjects[i];
-       ctx.beginPath();
-       ctx.arc(g.x, g.y, 0, 2*Math.PI);
-       ctx.strokeStyle = g.color;
-       ctx.stroke();
-
-       if(g.type != "player"){
-           g.y += g.speed *game.level;
-
-           if(collision(player, g)){
-               if(g.type == "enemy"){
-                   game.lives = game.lives-1;
-               }
-               else if(g.type == "points"){
-                   game.score = game.score +100;
-               }
-               if(game.score>=100){
-                   game.level++;
-               }
-               if(game.level>1){
-                   gameObjects.push({
-                    objectType: "enemy",
-                    xposition: c.width/2,
-                    yposition: 960,
-                    r: 20,
-                    color: "red",
-                    speed: game.level
-                });
-               }
-           }
-       }
-   }   
-        
-      
-        
-        
-        
-        
-        document.onkeydown = function(e){
-            if(e.keydown == 37){
-                //move left
-              player.left+=10;
-            }
-            if(e.keydown == 39){
-                //move right
-                player.right+=10;
-            }
-            drawPlayer();
-        }
-     
-
-
-
-  
-
-   }
-    
-</script>
+<script src="index.js"></script>
 
 </body>
 </html>
+ 
